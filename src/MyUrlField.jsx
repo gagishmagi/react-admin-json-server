@@ -1,0 +1,30 @@
+// in src/MyUrlField.js
+import * as React from "react";
+import { useRecordContext } from 'react-admin';
+import { makeStyles } from '@material-ui/core/styles';
+import LaunchIcon from '@material-ui/icons/Launch';
+
+
+const useStyles = makeStyles({
+    link: {
+        textDecoration: 'none',
+    },
+    icon: {
+        width: '0.5em',
+        height: '0.5em',
+        paddingLeft: 2,
+    },
+})
+
+const MyUrlField = ({ source }) => {
+    const record = useRecordContext();
+    const decorentions = useStyles();
+    return record ? (
+        <a href={record[source]} className={decorentions.link}>
+            {record[source]}
+            <LaunchIcon className={decorentions.icon} />
+        </a>
+    ) : null;
+}
+
+export default MyUrlField;
