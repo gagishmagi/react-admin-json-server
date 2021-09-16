@@ -5,11 +5,22 @@ import { UserList } from "./users";
 import { PostCreate, PostEdit, PostList } from "./posts";
 import PostIcon from '@material-ui/icons/Book';
 import UserIcon from '@material-ui/icons/Group';
-
+import { theme } from "./theme";
+import ThemedCustomRouteNoLayout from "./ThemedCustomRouteNoLayout";
+import {Route} from 'react-router-dom'
 
 const dataProvider = jsonServerProvider('https://jsonplaceholder.typicode.com');
 const App = () => 
-<Admin dataProvider={dataProvider} >
+<Admin dataProvider={dataProvider} theme={theme}
+customRoutes={[
+  <Route
+    exact
+    path="/custom"
+    component={(props) => <ThemedCustomRouteNoLayout {...props} />}
+    noLayout // Skip the layout
+  />,
+]}
+>
   <Resource name="users" list={UserList} icon={UserIcon}/>
   <Resource name="posts" list={PostList} show={ShowGuesser} icon={PostIcon} edit={PostEdit} create={PostCreate}/>
 </Admin>;
