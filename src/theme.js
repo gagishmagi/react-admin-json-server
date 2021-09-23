@@ -1,5 +1,6 @@
 import { defaultTheme } from "react-admin";
-import createMuiTheme from "@material-ui/core/styles/createTheme";
+// import createMuiTheme from "@material-ui/core/styles/createTheme";
+import { createMuiTheme } from '@material-ui/core/styles';
 import merge from "lodash/merge";
 
 export const theme = createMuiTheme(
